@@ -1,0 +1,85 @@
+<template>
+    <div>
+        <Header />
+        <h1>Vue app</h1>
+        <FilterBar />
+
+        <div class="px-10 overflow-auto">
+            <table class="w-full border-separate border-spacing-2">
+                <template v-if="isLoading"><div>Loading...</div></template>
+                <template v-else>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th class="min-w-[150px]">Code</th>
+                            <th class="min-w-[100px]">Item ID</th>
+                            <th>Quantity</th>
+                            <th>Quantity Unit</th>
+                            <th>Country Name</th>
+                            <th class="min-w-[150px]">Item Code</th>
+                            <th class="min-w-[200px]">Item Desc</th>
+                            <th>Product Type</th>
+                            <th class="min-w-[100px]">Grade</th>
+                            <th>Connection</th>
+                            <th class="min-w-[100px]">Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(data, i) in $store.state.data" :key="i">
+                            <td>{{ data.id }}</td>
+                            <td>{{ data.code }}</td>
+                            <td>{{ data.item_id }}</td>
+                            <td>{{ data.qty }}</td>
+                            <td>{{ data.qty_unit }}</td>
+                            <td>{{ data.country_name }}</td>
+                            <td>{{ data.item_code }}</td>
+                            <td>{{ data.item_desc }}</td>
+                            <td>{{ data.product_type }}</td>
+                            <td>{{ data.grade }}</td>
+                            <td>{{ data.connection }}</td>
+                            <td>{{ data.size }}</td>
+                        </tr>
+                    </tbody></template
+                >
+            </table>
+        </div>
+    </div>
+</template>
+
+<script>
+import axiosInstance from "./axios/index.js";
+import axiosIntance from "./axios/index.js";
+import Header from "./components/molecules/Header.vue";
+import FilterBar from "./components/organisms/FilterBar.vue";
+
+export default {
+    components: {
+        Header,
+        FilterBar,
+    },
+    data() {
+        return {
+            isLoading: false,
+            data: [],
+        };
+    },
+    async mounted() {
+        this.isLoading = true;
+        try {
+            const res = await axiosInstance.get("/api/data");
+            this.$store.dispatch("setData", res.data);
+        } catch (error) {
+            console.log(error.response.data);
+        } finally {
+            this.isLoading = false;
+        }
+    },
+    methods: {},
+};
+</script>
+
+<style scoped>
+td {
+    padding: 1rem;
+}
+</style>
