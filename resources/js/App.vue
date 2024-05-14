@@ -2,7 +2,7 @@
     <div>
         <Header />
         <h1>Vue app</h1>
-        <FilterBar />
+        <FilterBar @search="filter" />
 
         <div class="px-10 overflow-auto">
             <table class="w-full border-separate border-spacing-2">
@@ -25,7 +25,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(data, i) in $store.state.data" :key="i">
+                        <tr v-for="(data, i) in data" :key="i">
                             <td>{{ data.id }}</td>
                             <td>{{ data.code }}</td>
                             <td>{{ data.item_id }}</td>
@@ -48,7 +48,6 @@
 
 <script>
 import axiosInstance from "./axios/index.js";
-import axiosIntance from "./axios/index.js";
 import Header from "./components/molecules/Header.vue";
 import FilterBar from "./components/organisms/FilterBar.vue";
 
@@ -68,13 +67,32 @@ export default {
         try {
             const res = await axiosInstance.get("/api/data");
             this.$store.dispatch("setData", res.data);
+            this.data = this.$store.state.data;
         } catch (error) {
             console.log(error.response.data);
         } finally {
             this.isLoading = false;
         }
     },
-    methods: {},
+    methods: {
+        async filter(filterPriority) {
+            this.isLoading = true;
+            try {
+                let filteredList = this.$store.state.data;
+                filterPriority.forEach((filter) => {
+                    const filtered = filteredList.filter((data) => {
+                        return data[filter.filter] === filter.value;
+                    });
+                    filteredList = [...filtered];
+                });
+                this.data = filteredList;
+                console.log(this.data.length);
+            } catch (error) {
+            } finally {
+                this.isLoading = false;
+            }
+        },
+    },
 };
 </script>
 
