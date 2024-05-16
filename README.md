@@ -8,12 +8,25 @@
 ## Install dependency
 
 1. Run composer and npm install
-   `
-composer install
-npm install`
+    ```
+    composer install
+    npm install
+    ```
+
+```
 
 2. To build vue app run:
-   `npm run dev`
+```
+
+npm run dev
+
+```
 
 3. Open new terminal and run:
-   `php artisan serve`
+```
+
+php artisan serve
+
+```
+
+```
