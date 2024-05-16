@@ -250,3 +250,14 @@ export default {
     },
 };
 </script>
+
+<style>
+.multiselect__tags {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.multiselect__select {
+    height: 100%;
+}
+</style>
