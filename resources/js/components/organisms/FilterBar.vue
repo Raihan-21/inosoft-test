@@ -74,9 +74,10 @@
                 ></MultiSelect
             >
             <button
-                class="bg-secondary font-bold text-white p-4 rounded-lg"
+                class="bg-secondary font-bold text-lg text-white px-7 py-3 rounded-lg"
                 @click="search"
             >
+                <i class="icon-search"></i>
                 Find
             </button>
         </div>
