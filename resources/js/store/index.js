@@ -105,9 +105,8 @@ const store = new Vuex.Store({
                 const typeCount = countBy(data.products, filter);
                 state.filterOptions[filter] = state.filterOptions[filter].map(
                     (type, i) => {
-                        console.log(filter, data.type);
-                        if (filter === data.type[data.type.length - 1].filter)
-                            return { ...type };
+                        // if (filter === data.type[data.type.length - 1].filter)
+                        //     return { ...type };
                         if (!typeCount[type.name]) return { ...type, count: 0 };
                         return { ...type, count: typeCount[type.name] };
                     }

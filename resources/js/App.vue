@@ -5,7 +5,7 @@
         <div class="relative px-10">
             <div class="absolute top-[-40px] left-0 z-[2] w-full px-6">
                 <FilterBar
-                    @select="setFilterCount"
+                    @change="setFilterCount"
                     @search="setFilteredData"
                     class="w-full shadow-lg bg-white"
                 />

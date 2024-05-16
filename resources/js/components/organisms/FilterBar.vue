@@ -114,7 +114,7 @@ export default {
 
             if (!selected) {
                 this.filterList.push(filterValue);
-                this.$emit("select", filterData);
+                this.$emit("change", filterData);
                 return;
             }
             this.filterList = this.filterList.filter(
@@ -122,7 +122,7 @@ export default {
             );
             this.filterList.push(filterValue);
 
-            this.$emit("select", {
+            this.$emit("change", {
                 ...filterData,
                 filterList: this.filterList,
             });
@@ -149,7 +149,7 @@ export default {
 
             if (!selected) {
                 this.filterList.push(filterValue);
-                this.$emit("select", filterData);
+                this.$emit("change", filterData);
                 return;
             }
             this.filterList = this.filterList.filter(
@@ -157,7 +157,7 @@ export default {
             );
             this.filterList.push(filterValue);
 
-            this.$emit("select", {
+            this.$emit("change", {
                 ...filterData,
                 filterList: this.filterList,
             });
@@ -184,7 +184,7 @@ export default {
 
             if (!selected) {
                 this.filterList.push(filterValue);
-                this.$emit("select", filterData);
+                this.$emit("change", filterData);
                 return;
             }
             this.filterList = this.filterList.filter(
@@ -192,7 +192,7 @@ export default {
             );
             this.filterList.push(filterValue);
 
-            this.$emit("select", {
+            this.$emit("change", {
                 ...filterData,
                 filterList: this.filterList,
             });
@@ -219,7 +219,7 @@ export default {
 
             if (!selected) {
                 this.filterList.push(filterValue);
-                this.$emit("select", filterData);
+                this.$emit("change", filterData);
                 return;
             }
             this.filterList = this.filterList.filter(
@@ -227,7 +227,7 @@ export default {
             );
             this.filterList.push(filterValue);
 
-            this.$emit("select", {
+            this.$emit("change", {
                 ...filterData,
                 filterList: this.filterList,
             });
